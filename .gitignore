@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# Data: do not commit CMS downloads or derived large files
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Runtime artifacts
+artifacts/*
+!artifacts/.gitkeep
+mlruns/
+*.db
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/

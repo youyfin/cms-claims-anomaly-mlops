@@ -1,0 +1,26 @@
+project:
+  random_state: 42
+  top_n_anomalies: 20
+
+data:
+  raw_csv: data/raw/inpatient_claims.csv
+  cleaned_csv: data/processed/inpatient_claims_clean.csv
+  sqlite_db: artifacts/claims.db
+  provider_features_csv: data/processed/provider_features.csv
+  high_cost_quantile: 0.90
+
+anomaly_model:
+  contamination: 0.05
+  n_estimators: 300
+
+supervised_model:
+  test_size: 0.25
+  class_weight: balanced
+  n_estimators: 300
+
+mlflow:
+  enabled: true
+  tracking_db: artifacts/mlflow/mlflow.db
+  experiment_name: cms-claims-interview-project
+  anomaly_registered_model: cms-provider-anomaly-model
+  supervised_registered_model: cms-high-cost-claim-classifier

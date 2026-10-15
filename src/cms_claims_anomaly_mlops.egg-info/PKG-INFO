@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: cms-claims-anomaly-mlops
+Version: 0.1.0
+Summary: Interview-ready CMS DE-SynPUF ETL, SQL feature engineering, ML, MLflow, Docker, and CI project
+Requires-Python: >=3.10
