@@ -1,3 +1,8 @@
+# supervised.py: Train a high-cost claim classifier using a Random Forest
+# cleaned claims -> (X, y): X = 7 predictors, y = high-cost indicator -> train/test split
+#                -> Random Forest -> fit ->  prediction+ probability
+#                -> metrics: precision, recall, f1, roc_auc, pr_auc -> save:model + plot + feature importance 
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -16,6 +21,7 @@ from sklearn.metrics import (
 )
 from sklearn.model_selection import train_test_split
 
+# 7 predictors from cleaned claims
 CLAIM_FEATURES = [
     "NCH_PRMRY_PYR_CLM_PD_AMT",
     "CLM_UTLZTN_DAY_CNT",
