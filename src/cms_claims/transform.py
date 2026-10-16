@@ -26,7 +26,7 @@ def _parse_cms_date(series: pd.Series) -> pd.Series:
 
 def clean_claims(raw_csv: Path, output_csv: Path, high_cost_quantile: float = 0.90) -> dict:
     '''
-    Clean the claims data and generate features
+    Clean the claims data and generate features for the raw claims data (12000 rows)
     '''
     df = pd.read_csv(raw_csv, dtype={"DESYNPUF_ID": "string", "CLM_ID": "string", "PRVDR_NUM": "string"})
 

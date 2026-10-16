@@ -1,11 +1,11 @@
 project:
-  random_state: 42
-  top_n_anomalies: 20
+  random_state: 42                                                   # Random seed for reproducibility: demo generation, train/testsplit, Random Forest, Isolation Forest
+  top_n_anomalies: 20                                                # Top N anomalies to detect, not top N fraud cases
 
 data:
   raw_csv: data/raw/inpatient_claims.csv
   cleaned_csv: data/processed/inpatient_claims_clean.csv
-  sqlite_db: artifacts/claims.db
+  sqlite_db: artifacts/claims.db                                     # SQLite DB file to store tables: inpatient_claims, provider_features
   provider_features_csv: data/processed/provider_features.csv
   high_cost_quantile: 0.90
 
