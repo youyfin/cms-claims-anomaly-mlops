@@ -24,7 +24,7 @@ from sklearn.model_selection import train_test_split
 # 7 predictors from cleaned claims
 CLAIM_FEATURES = [
     "NCH_PRMRY_PYR_CLM_PD_AMT",
-    "CLM_UTLZTN_DAY_CNT",
+    "CLM_UTLZTN_DAY_CNT",            
     "length_of_stay",
     "weekend_start",
     "diagnosis_count",
@@ -44,25 +44,25 @@ def train_high_cost_classifier(
 ) -> dict:
     df = pd.read_csv(cleaned_csv)
     X = df[CLAIM_FEATURES].fillna(0.0).astype(float)
-    y = df["is_high_cost_claim"].astype(int)
+    y = df["is_high_cost_claim"].astype(int)                    # 1 if high-cost claim, 0 otherwise
 
     X_train, X_test, y_train, y_test = train_test_split(
         X,
         y,
         test_size=test_size,
         random_state=random_state,
-        stratify=y,
+        stratify=y,                                            # keep the same proportion of high-cost and low-cost claims in the training and test sets
     )
     model = RandomForestClassifier(
-        n_estimators=n_estimators,
-        random_state=random_state,
-        class_weight=class_weight,
+        n_estimators=n_estimators,                             # number of trees in the forest
+        random_state=random_state,                             
+        class_weight=class_weight,                             # give more weight to the minority class (high-cost claims)
         n_jobs=-1,
-        min_samples_leaf=2,
+        min_samples_leaf=2,                                    # minimum number of samples required to be at a leaf node
     )
-    model.fit(X_train, y_train)
-    pred = model.predict(X_test)
-    proba = model.predict_proba(X_test)[:, 1]
+    model.fit(X_train, y_train)                                # fit the model to the training set
+    pred = model.predict(X_test)                               # predict the class labels for the test set
+    proba = model.predict_proba(X_test)[:, 1]                  # P(y=1|x): predict the probability of the positive class (high-cost claims)
 
     metrics = {
         "precision": float(precision_score(y_test, pred, zero_division=0)),
@@ -74,11 +74,12 @@ def train_high_cost_classifier(
     }
 
     artifact_dir.mkdir(parents=True, exist_ok=True)
-    model_path = artifact_dir / "high_cost_claim_classifier.joblib"
-    cm_path = artifact_dir / "high_cost_confusion_matrix.png"
-    importance_path = artifact_dir / "high_cost_feature_importance.csv"
-    joblib.dump(model, model_path)
-
+    model_path = artifact_dir / "high_cost_claim_classifier.joblib"              # placeholder for the model path
+    cm_path = artifact_dir / "high_cost_confusion_matrix.png"                    # placeholder for the confusion matrix path
+    importance_path = artifact_dir / "high_cost_feature_importance.csv"          # placeholder for the feature importance path
+    joblib.dump(model, model_path)                                               # save the model to the model path
+    
+    # Plot the confusion matrix
     fig, ax = plt.subplots(figsize=(5.5, 5))
     ConfusionMatrixDisplay.from_predictions(y_test, pred, ax=ax, colorbar=False)
     ax.set_title("High-cost claim classifier - confusion matrix")
@@ -86,11 +87,13 @@ def train_high_cost_classifier(
     fig.savefig(cm_path, dpi=150)
     plt.close(fig)
 
+    # Calculate the feature importance
     importances = pd.DataFrame(
         {"feature": CLAIM_FEATURES, "importance": model.feature_importances_}
     ).sort_values("importance", ascending=False)
     importances.to_csv(importance_path, index=False)
 
+    # Log the metrics, artifacts, and model to MLflow
     if mlflow_cfg and mlflow_cfg.get("enabled", False):
         from .mlflow_utils import setup_mlflow
 
