@@ -1,7 +1,8 @@
 # Detailed Description
 
-## Raw Data (inpatient_claims.csv): 12000x29
+## Official CMS DE-SynPUF(inpatient_claims.csv): 66494x81
 
+### Columns we use.
 - 1. Billing Statement and Patient/Hospital Identification Information
     - DESYNPUF_ID: Patient ID
     - CLM_ID: claim ID
@@ -33,7 +34,7 @@
     - ICD9_PRCDR_CD : 6 procedure codes
 <br><br>
 
-## Cleaned claims data (inpatient_claims_clean.csv): 12000x35
+## Cleaned claims data (inpatient_claims_clean.csv): 66434x87
 
 - 1. Billing Statement and Patient/Hospital Identification Information
     - DESYNPUF_ID 
@@ -75,7 +76,7 @@
         - 1 if CLM_PMT_AMT (claim payment amount) exceeds the top N% of the entire dataset (e.g., 0.90 or 0.95 quantile); otherwise, 0.
 <br><br>
 
-## Provider Features (provider_features.csv): 120x16
+## Provider Features (provider_features.csv): 2704x16
 1. Description: By "Group by", it is categorized by provider. Then created the group (provider) features to compare providers
 
 2. Features
@@ -103,4 +104,5 @@
     - avg_procedure_count: AVG(procedure_count)
     - primary_payer_zero_share: SUM(primary_payer_zero) / claim_count
     - high_cost_claim_share: SUM(is_high_cost_claim) / claim_count
-       
+<br><br>       
+

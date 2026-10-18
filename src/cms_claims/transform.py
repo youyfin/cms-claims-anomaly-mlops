@@ -35,7 +35,7 @@ def clean_claims(raw_csv: Path, output_csv: Path, high_cost_quantile: float = 0.
     before = data_quality_report(df)
 
     # Data Cleaning:Drop duplicates and keep only valid providers
-    df = df.drop_duplicates(subset=["CLM_ID"]).copy()
+    df = df.drop_duplicates(subset=["CLM_ID"]).copy()     # keep = first occurrence
     df = df[df["PRVDR_NUM"].notna()].copy()
 
     # Data Cleaning: Parse CMS DE-SynPUF dates
