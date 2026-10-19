@@ -147,11 +147,13 @@ def train_anomaly_model(
             mlflow.log_metrics(metrics)
             mlflow.log_artifact(str(chart_path))
             mlflow.log_artifact(str(top_path))
+            mlflow.log_artifact(str(scored_path))
             mlflow.sklearn.log_model(
                 sk_model=model,
                 name="provider_anomaly_model",
                 input_example=X.head(5),
                 registered_model_name=mlflow_cfg.get("registered_model_name"),
+                skops_trusted_types=["sklearn.tree._tree.Tree"],
             )
 
     return {"metrics": metrics, "scored_path": scored_path, "model_path": model_path, "chart_path": chart_path}

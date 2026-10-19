@@ -21,6 +21,6 @@ supervised_model:
 mlflow:
   enabled: true
   tracking_db: artifacts/mlflow/mlflow.db
-  experiment_name: cms-claims-interview-project
+  experiment_name: cms-claims-project
   anomaly_registered_model: cms-provider-anomaly-model
   supervised_registered_model: cms-high-cost-claim-classifier

@@ -116,6 +116,7 @@ def train_high_cost_classifier(
                 name="high_cost_claim_classifier",
                 input_example=X_train.head(5),
                 registered_model_name=mlflow_cfg.get("registered_model_name"),
+                skops_trusted_types=["sklearn.tree._tree.Tree"],
             )
 
     return {"metrics": metrics, "model_path": model_path, "cm_path": cm_path}

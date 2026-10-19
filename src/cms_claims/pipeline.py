@@ -36,11 +36,11 @@ def run_pipeline(project_root: Path, config_path: Path, enable_mlflow: bool | No
     build_provider_features(cleaned_csv, sqlite_db, sql_file, provider_features_csv)                   # build provider_features: 120 rows
     
     # MLflow Configuration
-    mlflow_base = cfg.get("mlflow", {}).copy()
-    if enable_mlflow is not None:
+    mlflow_base = cfg.get("mlflow", {}).copy()           
+    if enable_mlflow is not None:                                                                      # enable_mlflow: True or False
         mlflow_base["enabled"] = enable_mlflow
-    if "tracking_db" in mlflow_base:
-        mlflow_base["tracking_db"] = str(resolve_project_path(project_root, mlflow_base["tracking_db"]))
+    if "tracking_db" in mlflow_base:                             
+        mlflow_base["tracking_db"] = str(resolve_project_path(project_root, mlflow_base["tracking_db"]))     # absolute path
     
     # Anomaly Model Training (Unsupervised)
     anomaly_mlflow = mlflow_base.copy()
