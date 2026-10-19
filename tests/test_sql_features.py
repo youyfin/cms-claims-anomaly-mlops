@@ -1,8 +1,8 @@
 from pathlib import Path
 
+from cms_claims.demo_data import make_demo
 from cms_claims.sql_features import build_provider_features
 from cms_claims.transform import clean_claims
-from cms_claims.demo_data import make_demo
 
 
 def test_provider_features(tmp_path: Path):

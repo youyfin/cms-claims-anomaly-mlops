@@ -123,7 +123,7 @@ def train_anomaly_model(
     plt.close(fig)
 
     metrics = {
-        "provider_count": int(len(scored)),
+        "provider_count": len(scored),
         "flagged_count": int(scored["is_anomaly"].sum()),
         "flagged_rate": float(scored["is_anomaly"].mean()),
         "mean_flagged_avg_payment": float(anomaly["avg_payment"].mean()) if not anomaly.empty else 0.0,

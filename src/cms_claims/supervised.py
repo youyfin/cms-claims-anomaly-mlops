@@ -70,7 +70,7 @@ def train_high_cost_classifier(
         "f1": float(f1_score(y_test, pred, zero_division=0)),
         "roc_auc": float(roc_auc_score(y_test, proba)),
         "pr_auc": float(average_precision_score(y_test, proba)),
-        "test_rows": int(len(y_test)),
+        "test_rows": len(y_test),
     }
 
     artifact_dir.mkdir(parents=True, exist_ok=True)

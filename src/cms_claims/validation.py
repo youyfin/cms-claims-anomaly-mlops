@@ -33,7 +33,7 @@ def data_quality_report(df: pd.DataFrame) -> dict[str, float | int]:
     missing_provider = float(df["PRVDR_NUM"].isna().mean())
     missing_payment = float(df["CLM_PMT_AMT"].isna().mean())
     return {
-        "rows": int(len(df)),
+        "rows": len(df),
         "columns": int(df.shape[1]),
         "duplicate_claim_ids": duplicate_claims,
         "missing_provider_rate": missing_provider,

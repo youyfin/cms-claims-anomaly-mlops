@@ -1,10 +1,10 @@
 from pathlib import Path
 
 from cms_claims.anomaly import train_anomaly_model
+from cms_claims.demo_data import make_demo
 from cms_claims.sql_features import build_provider_features
 from cms_claims.supervised import train_high_cost_classifier
 from cms_claims.transform import clean_claims
-from cms_claims.demo_data import make_demo
 
 
 def test_models_without_mlflow(tmp_path: Path):

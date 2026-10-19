@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from cms_claims.transform import clean_claims
 from cms_claims.demo_data import make_demo
+from cms_claims.transform import clean_claims
 
 
 def test_clean_claims(tmp_path: Path):
