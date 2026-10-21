@@ -4,7 +4,7 @@
 
 > **Important:** This repository is an educational anomaly-screening prototype. CMS DE-SynPUF is synthetic and does not contain an adjudicated fraud label. A flagged provider is **not** evidence of fraud.
 
-![Provider risk scatter](docs/images/provider_risk_scatter.png)
+![Provider risk scatter](./artifacts/provider_risk_scatter.png)
 
 ## What this project demonstrates
 
