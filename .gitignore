@@ -22,3 +22,6 @@ mlruns/
 .DS_Store
 .vscode/
 .idea/
+
+# 특정 파일 제외
+.archify/
