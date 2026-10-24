@@ -15,6 +15,7 @@ data/processed/*
 # Runtime artifacts
 artifacts/*
 !artifacts/.gitkeep
+!artifacts/provider_risk_scatter.png
 mlruns/
 *.db
 
