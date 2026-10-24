@@ -27,3 +27,4 @@ mlruns/
 # 특정 파일 제외
 .archify/
 docs/*
+!docs/.gitkeep
