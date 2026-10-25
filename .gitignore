@@ -28,3 +28,4 @@ mlruns/
 .archify/
 docs/*
 !docs/.gitkeep
+!docs/ARCHITECTURE.md
