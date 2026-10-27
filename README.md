@@ -229,6 +229,14 @@ docker run --rm \
 └── README.md
 ```
 
+## mlflow access
+mlflow ui \
+  --backend-store-uri sqlite:///artifacts/mlflow/mlflow.db \
+  --host 0.0.0.0 \
+  --port 5000
+
+
+
 ## Interview walkthrough
 
 Use [`docs/INTERVIEW_GUIDE.md`](docs/INTERVIEW_GUIDE.md). The recommended demonstration is 5-7 minutes: problem framing -> ETL/SQL -> modeling -> MLflow -> Docker/CI -> AWS/Databricks extension.
