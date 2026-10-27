@@ -17,11 +17,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
           pip install -e .
-      - name: Lint
+      - name: Lint                               # Lint the code using ruff. This will check for syntax errors, formatting issues, and other style violations.
         run: ruff check src scripts tests
-      - name: Unit tests
+      - name: Unit tests                         # Run the unit tests using pytest. This will run the tests and report the results.
         run: pytest -q
-      - name: Smoke test end-to-end pipeline
+      - name: Smoke test end-to-end pipeline     # Run the end-to-end pipeline to smoke test the application. This will generate some demo data and run the pipeline.
         run: |
           python scripts/generate_demo_data.py --rows 3000
           python scripts/run_pipeline.py --disable-mlflow
