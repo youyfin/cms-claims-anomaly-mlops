@@ -1,4 +1,5 @@
-FROM python:3.11-slim
+
+FROM python:3.11-slim                                      
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
@@ -14,4 +15,5 @@ COPY sql ./sql
 COPY scripts ./scripts
 COPY data ./data
 
+# When the container is run, the pipeline will automatically be executed
 CMD ["python", "scripts/run_pipeline.py"]
